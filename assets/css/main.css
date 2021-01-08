@@ -1,0 +1,83 @@
+
+.comp_name{
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    font-family: inherit;
+    font-size: 40px;
+}
+.comp_tag{
+  position: absolute;
+    top: 23%;
+    left: 13%;
+    
+    font-size: 20px;   
+}
+.powerdby{
+    position: absolute;
+    bottom: 15%;
+    left: 10%;
+}
+.title{
+    color: white;
+}
+
+.login-page{
+    height: auto;
+    background: #fff;
+}
+.register-page{
+ height: auto;
+    background: #fff;   
+}
+
+.login_area{
+    
+margin-top:  12%;
+
+}
+
+.register-box{
+ margin-top:  15%;   
+}
+.password{
+    padding: 30px 0px;
+}
+
+.error-msg {
+    padding-bottom: 20px;
+    color: #D8000C;
+    text-align: center;
+}
+
+.success-msg {
+    padding-bottom: 20px;
+    color: green;
+    text-align: center;
+}
+
+.validation-reponse {
+    text-align:right;
+    color: red;
+}
+
+.submit-button{
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+.content-wrapper {
+    background-color: #fff;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (-moz-min-device-pixel-ratio: 1.5),
+       only screen and (-o-min-device-pixel-ratio: 3/2),
+       only screen and (min-device-pixel-ratio: 1.5) {
+    .icheckbox_square-blue,
+    .iradio_square-blue {
+        background-image: url(blue%402x.png);
+        -webkit-background-size: 240px 24px;
+        background-size: 240px 24px;
+    }
+}

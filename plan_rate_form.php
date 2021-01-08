@@ -1,7 +1,4 @@
-<?php
- require_once './Model/Member.php';
-
- ?><!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
@@ -31,6 +28,7 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
+  <link rel="stylesheet" href="assets/css/main.css">
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -40,9 +38,6 @@
 <?php 
 include("header.php");
 include("left_panel.php");
-$user_type = $_SESSION["user_type"];
-$user_name = $_SESSION["user_name"];
-$user_id = $_SESSION["user_id"];
 ?>
   
 
@@ -53,8 +48,8 @@ $user_id = $_SESSION["user_id"];
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control panel</small>
+        Membership Details Form
+        
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -64,76 +59,67 @@ $user_id = $_SESSION["user_id"];
 
     <!-- Main content -->
     <section class="content">
-      <!-- Small boxes (Stat box) -->
-      <div class="row">
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>150</h3>
-
-              <p>New Orders</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-              <p>Bounce Rate</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>44</h3>
-
-              <p>User Registrations</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>65</h3>
-
-              <p>Unique Visitors</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-      </div>
-      <!-- /.row -->
+    
       <!-- Main row -->
       <div class="row">
         <!-- Left col -->
-        <!-- <section class="col-lg-6 connectedSortable">
-       Put primary r info div in this 
-        </section> -->
+        <section class="col-lg-6 connectedSortable">
+        
+        <div class="box-body">
+           <form class="form-horizontal">        
+             <div class="form-group">
+              <label class="col-sm-4 control-label" style="text-align:left;">Plan Name</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control">
+                 </div> 
+              </div>
+             
+
+             <div class="form-group">
+                 <label class="col-sm-4 control-label" style="text-align:left;">Amount (USD)</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="Per Month">
+                 </div> 
+              </div>
+
+              <div class="form-group">
+                 <label class="col-sm-4 control-label" style="text-align:left;">Discount (USD) %</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="Eg : 20">
+                 </div> 
+              </div>  
+
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label" style="text-align:left;">No of Participants</label>
+                 <div class="col-sm-8">
+                <input type="text" class="form-control">
+              </div>
+              </div>
+              
+              <div class="form-group">
+                 <label for="inputEmail3" class="col-sm-4 control-label" style="text-align:left;">Features</label>
+                
+                <div class="col-sm-8">
+                  <textarea rows=5 cols=48 class="form-control"></textarea>
+
+                </div>
+              </div>
+              <!-- /.form group -->
+
+              <!-- IP mask -->
+              <div class="form-group">
+               <button type="button" class="btn btn-primary pull-right" style="margin-right: 15px;">
+             Submit
+            </button>
+              </div>
+              <!-- /.form group -->
+              </form>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          
+          
+        </section>
         <!-- /.Left col -->
         <!-- right col (We are only adding the ID to make the widgets sortable)-->
         <section class="col-lg-4 connectedSortable">

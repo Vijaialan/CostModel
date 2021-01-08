@@ -1,42 +1,58 @@
-  <aside class="main-sidebar">
+ <?php
+ require_once './Model/Member.php';
+$user_type = $_SESSION["user_type"];
+$user_name = $_SESSION["user_name"];
+$user_id = $_SESSION["user_id"];
+
+$menu1 = $menu2 = $menu3 = $menu4 = $menu5 = 'none';
+
+if($user_type==0){
+  $menu1 =  $menu2 = $menu3 = $menu4 = $menu5 = 'block';
+}
+if($user_type==1){
+  $menu1 =  $menu2 = $menu3 = $menu4 = $menu5 = 'block';
+}
+if($user_type==2){
+  $menu1 =  $menu2 = $menu5 =  'block';
+}
+if($user_type==3){
+  $menu1 =  $menu2 = $menu5 =  'block';
+}
+
+ ?> <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-        </div>
-      </div>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-     
-      <ul class="sidebar-menu" data-widget="tree">
+  
+    <ul class="sidebar-menu" data-widget="tree">
         
       
-       <li>
-          <a href="dashboard.php">
-            <i class="fa fa-th"></i> <span>Dashboard</span>
+       <li style=display:<?php echo $menu1;?>>
+          <a href="home.php">
+            <span>Home</span>
           </a>
         </li>
-        <li>
+        <li style=display:<?php echo $menu2;?>>
           <a href="landing.php">
-            <i class="fa fa-th"></i> <span>Landing Page</span>
+            <span>Cost Profile</span>
+          </a>
+        </li>
+        <!-- <li style=display:<?php echo $menu3;?>>
+          <a href="report_user_details.php">
+            <span>User Management</span>
+          </a>
+        </li> -->
+      
+        <li style=display:<?php echo $menu4;?>>
+          <a href="plan_rate_form.php">
+            <span>Membership Rates Form</span>
+          </a>
+        </li>
+        <li style=display:<?php echo $menu5;?>>
+          <a href="account_setting.php">
+            <span>Account Settings</span>
           </a>
         </li>
 
-       
       </ul>
     </section>
     <!-- /.sidebar -->
