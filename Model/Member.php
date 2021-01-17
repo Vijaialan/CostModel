@@ -174,8 +174,13 @@ class Member
 
 
 
-
-
-
+    public function fetchNAICScode()
+    {
+        $query = 'SELECT NAICS_code FROM master_industry_code';
+        $NAICSCode = $this->ds->select($query);
+        return $NAICSCode;
+        //var_dump($NAICSCode);
+    }
 
 }
+

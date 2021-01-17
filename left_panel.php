@@ -32,7 +32,7 @@ if($user_type==3){
           </a>
         </li>
         <li style=display:<?php echo $menu2;?>>
-          <a href="landing.php">
+          <a href="cost_profile.php">
             <span>Cost Profile</span>
           </a>
         </li>
