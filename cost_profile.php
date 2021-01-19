@@ -1,13 +1,7 @@
 <?php
-namespace Phppot;
+use Phppot\Member;
  require_once './Model/Member.php';
-
-
- foreach ($this->ds->fetchNAICScode() as $row)  
- {
-   print_r($row);
- }
- exit();
+ $member = new Member();
  ?>
  <!DOCTYPE html>
 <html>
@@ -65,8 +59,8 @@ $user_id = $_SESSION["user_id"];
         Industry Details
       </h4>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Advanced Elements</li>
+        <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Cost Profile</li>
       </ol>
     </section>
 
@@ -75,38 +69,31 @@ $user_id = $_SESSION["user_id"];
     <div class="row col-md-6" style="margin-left:25%;">
         
           
-        <form class="form-horizontal">        
+        <form class="form-horizontal" method="POST" action="cost_profile.php" id="indusform">        
           <div class="form-group">
            <label class="col-sm-4 control-label" style="text-align:left;">Country</label>
              <div class="col-sm-8">
-             <input type="text" class="form-control" value="USA" readonly="" data-toggle="tooltip" data-placement="top" title="Other countries will be live soon.">
+             <input type="text" class="form-control" value="USA" readonly="" name="country" data-toggle="tooltip" data-placement="top" title="Other countries will be live soon.">
              <!-- <select class="form-control select2" style="width: 100%;">
                <option value="">Select Country</option>
                <option value="USA">USA</option>
                </select>  -->
               </div> 
            </div>
-          
 
-          <div class="form-group">
-              <label class="col-sm-4 control-label" style="text-align:left;">Industry Type</label>
-             <div class="col-sm-8">
-             <select class="form-control select2" id="indusType" style="width: 100%;">
-               <option value="">Select Industry Type</option>
-          
-         <option value="hi">hi</option>
-              
-               </select>
-              </div> 
-           </div>
-
-           <div class="form-group">
+           <div class="form-group"> 
              <label for="inputEmail3" class="col-sm-4 control-label" style="text-align:left;">Search Industry Code</label>
               <div class="col-sm-8">
-              <select class="form-control select2" id="indusType" style="width: 100%;">
-               <option value="">Select Industry Type</option>
-               <option value="Manufacturing">Manufacturing</option>
-               <option value="Service">Service</option>
+              <select class="form-control select2" id="indusCode" name="indusCode" style="width: 100%;" onchange="indcode()">
+               <option value="">Select Industry Code</option>
+               <?php
+                  // Iterating through the product array
+                  foreach ($member->fetchNAICScode() as $row)  {
+                      $value = $row['NAICS_code'];
+                      $Desc = $row['NAICS_title'];
+                      echo "<option value='$value'>$value</option>";
+                  }
+              ?>
                </select>
               </div>
            </div>
@@ -118,96 +105,123 @@ $user_id = $_SESSION["user_id"];
            <div class="form-group">
               <label for="inputEmail3" class="col-sm-4 control-label" style="text-align:left;">Search Industry description</label>
              <div class="col-sm-8">
-             <select class="form-control select2" id="indusType" style="width: 100%;">
-               <option value="">Select Industry Type</option>
-               <option value="Manufacturing">Manufacturing</option>
-               <option value="Service">Service</option>
-               </select>
+             <select  class="form-control select2" id="indusDesc" name="indusDesc" style="width: 100%;" onchange="inddesc()">
+               <option value="">Select Industry description</option>
+               <?php
+                  // Iterating through the product array
+                  foreach ($member->fetchNAICScode() as $row)  {
+                      $value = $row['NAICS_code'];
+                      $Desc = $row['NAICS_title'];
+                      echo "<option value='$Desc'>$Desc</option>";
+                  }
+              ?>
+              </select>
              </div>
            </div>
-           <!-- /.form group -->
-
-           <!-- IP mask -->
-           
-            <button type="button" class="btn btn-primary pull-left" style="margin-left: 36%;" onClick="showIndusTypeData()">
+           <div class="col-sm-12" style="margin-left: 26%;" >
+           <ul class="pagination pagination-sm no-margin" >
+                <li><button type="submit" name="showIndusTypeData" class="btn btn-primary">Generate Cost Profile</button></li>
+                <li><button type="button" class="btn btn-warning"><a href="" style="text-decoration: none;color:white;">Reset</a></button></li>
+              </ul>
+                </div>
+            <!-- <button type="submit" name="showIndusTypeData" class="btn btn-primary pull-left" style="margin-left: 36%;">
           Generate Cost Profile
-           </button>
+           </button> -->
+          
            
-           <!-- /.form group -->
          </form>
    </div>
-    
+    <?php
+    if(isset($_POST['showIndusTypeData'])){
+     
+      $Code = ($_POST['indusCode'] !='') ? $_POST['indusCode'] : '';
+      $Desc = ($_POST['indusDesc'] !='') ? $_POST['indusDesc'] : '';
+
+     $IndustrialData =  $member->fetchIduData($Code,$Desc);
+     //  print_r($IndustrialData); 
+$country = $_POST['country'];
+
+echo'
+
    <div class="col-md-12" >
             <h4>
-            Industry Cost Profile for NAICS code 24XXX01 : Plastic and Rubber Manufacturing
+            Industry Cost Profile for NAICS code '.$IndustrialData[0]['NAICS_code'].' : '.$IndustrialData[0]['NAICS_title'].'
             </h4>
-            <div class="col-md-5">
+            <div class="col-md-4">
+               
                 <div class="box-body">
                   <canvas id="pieChart" style="height:250px"></canvas>
+                  <h4 style="text-align:center;">2021</h4>
                 </div>
              </div>
-         
-       <!-- manufacturing data starts -->
-      
-       
-           <div class="col-md-7" id="ManufacturingType" style="display:none;">
+             
+             <div class="col-md-8" id="ManufacturingType">
+           
             <div class="box-body">
               <table class="table table-bordered">
                 <tr>
-                  <th style="width: 10px">#</th>
                   <th>Cost Element</th>
-                  <th style="width: 30%">%</th>
+                  <th style="width: 10%">2021</th>
+                  <th style="width: 10%">2020</th>
+                  <th style="width: 10%">2019</th>
+                  <th style="width: 10%">2018</th>
+                  <th style="width: 10%">2017</th>
                   <th style="width: 40px">Source</th>
                 </tr>
                 <tr>
-                  <td>1.</td>
                   <td>Direct Material</td>
-                  <td>
-                    <div class="progress progress-xs">
-                      <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-red">55%</span></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>2.</td>
                   <td>Direct Labor</td>
-                  <td>
-                    <div class="progress progress-xs">
-                      <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-yellow">70%</span></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>3.</td>
-                  <td>Manufacturing Overheads</td>
-                  <td>
-                    <div class="progress progress-xs progress-striped active">
-                      <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-light-blue">30%</span></td>
+                  <td>Overheads</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>4.</td>
-                  <td>SGA (to have a pop up box expanding the abbreviation)</td>
-                  <td>
-                    <div class="progress progress-xs progress-striped active">
-                      <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-green">90%</span></td>
+                <td>Cost of Sales</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+                <tr>
+                <td style="width: 40%" data-toggle="tooltip" data-placement="top" title="Selling, General, and Admin
+                Expenses">SGA</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>5.</td>
-                  <td>PBT (to have a pop up box expanding the abbreviation)</td>
-                  <td>
-                    <div class="progress progress-xs progress-striped active">
-                      <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-green">90%</span></td>
+                  <td style="width: 40%" data-toggle="tooltip" data-placement="top" title="Profit Before Tax">PBT</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
               </table>
             </div>
@@ -216,80 +230,9 @@ $user_id = $_SESSION["user_id"];
                 <li><button type="button" class="btn btn-warning">Download in Excel</button></li>
               </ul>
           </div> 
-        
-          
-        <!-- manufacturing data ends -->
-        
-         <!-- service data starts -->
-       
-         
-        <div class="col-md-7" id="serviceType" style="display:none;">
-            <div class="box-body">
-              <table class="table table-bordered">
-                <tr>
-                  <th style="width: 10px">#</th>
-                  <th>Cost Element</th>
-                  <th style="width: 30%">%</th>
-                  <th style="width: 40px">Source</th>
-                </tr>
-                <tr>
-                  <td>1.</td>
-                  <td>Direct Material</td>
-                  <td>
-                    <div class="progress progress-xs">
-                      <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-red">55%</span></td>
-                </tr>
-                <tr>
-                  <td>2.</td>
-                  <td>Direct Labor</td>
-                  <td>
-                    <div class="progress progress-xs">
-                      <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-yellow">70%</span></td>
-                </tr>
-                <tr>
-                  <td>3.</td>
-                  <td>Service Overheads</td>
-                  <td>
-                    <div class="progress progress-xs progress-striped active">
-                      <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-light-blue">30%</span></td>
-                </tr> 
-                <tr>
-                  <td>4.</td>
-                  <td>SGA (to have a pop up box expanding the abbreviation)</td>
-                  <td>
-                    <div class="progress progress-xs progress-striped active">
-                      <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-green">90%</span></td>
-                </tr>
-                <tr>
-                  <td>5.</td>
-                  <td>PBT (to have a pop up box expanding the abbreviation)</td>
-                  <td>
-                    <div class="progress progress-xs progress-striped active">
-                      <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                    </div>
-                  </td>
-                  <td><span class="badge bg-green">90%</span></td>
-                </tr>
-              </table>
-            </div>
-              <ul class="pagination pagination-sm no-margin pull-right">
-                <li><button type="button" class="btn btn-primary">Save</button></li>
-                <li><button type="button" class="btn btn-warning">Download in Excel</button></li>
-              </ul>
-        </div> 
-          
+        </div>  
+       ';
+   }?>
         
         <!-- service data ends -->
       
@@ -554,37 +497,31 @@ $user_id = $_SESSION["user_id"];
         value    : 700,
         color    : '#f56954',
         highlight: '#f56954',
-        label    : 'Chrome'
+        label    : 'Direct Labor'
       },
       {
         value    : 500,
         color    : '#00a65a',
         highlight: '#00a65a',
-        label    : 'IE'
+        label    : 'Direct Material'
       },
       {
         value    : 400,
         color    : '#f39c12',
         highlight: '#f39c12',
-        label    : 'FireFox'
+        label    : 'Overheads'
       },
       {
         value    : 600,
         color    : '#00c0ef',
         highlight: '#00c0ef',
-        label    : 'Safari'
+        label    : 'SGA'
       },
       {
         value    : 300,
         color    : '#3c8dbc',
         highlight: '#3c8dbc',
-        label    : 'Opera'
-      },
-      {
-        value    : 100,
-        color    : '#d2d6de',
-        highlight: '#d2d6de',
-        label    : 'Navigator'
+        label    : 'PBT'
       }
     ]
     var pieOptions     = {
@@ -607,21 +544,21 @@ $user_id = $_SESSION["user_id"];
 
   })
 
+   
 
-  function showIndusTypeData(){
-      
-      var indusType = document.getElementById("indusType").value;
-      if(indusType=='Manufacturing'){
-            document.getElementById("ManufacturingType").style.display="block";
-            document.getElementById("serviceType").style.display="none";
-      }else{
-            document.getElementById("serviceType").style.display="block";
-            document.getElementById("ManufacturingType").style.display="none";
-      }
+function indcode(){
+  document.getElementById("indusDesc").disabled = true;
+}
+function inddesc(){
+  document.getElementById("indusCode").disabled = true;
+}
 
-      
-      
-  }
+
+$('#indusform').on('submit', function() {
+  $('#indusDesc').prop('disabled', false);
+  $('#indusCode').prop('disabled', false);
+});
+
 </script>
 
 </body>

@@ -163,8 +163,18 @@ class Member
             $_SESSION["user_id"] = $memberRecord[0]["user_id"];
             $_SESSION["user_name"] = $memberRecord[0]["user_name"];
             $_SESSION["user_type"] = $memberRecord[0]["user_type"];
+            $_SESSION["created_date"] = $memberRecord[0]["created_date"];
+            $_SESSION["job_title"] = $memberRecord[0]["job_title"]; 
+            $_SESSION["first_name"] = $memberRecord[0]["first_name"]; 
+            $_SESSION["last_name"] = $memberRecord[0]["last_name"]; 
             session_write_close();
-            $url = "./home.php";
+            if($memberRecord[0]["user_type"]==0  || $memberRecord[0]["user_type"]==1){
+                $url = "./home.php";
+            }
+            elseif($memberRecord[0]["user_type"]==2 || $memberRecord[0]["user_type"]==3){
+                $url = "./cost_profile.php";
+            }
+            
             header("Location: $url");
         } else if ($loginPassword == 0) {
             $loginStatus = "Invalid username or password.";
@@ -176,10 +186,16 @@ class Member
 
     public function fetchNAICScode()
     {
-        $query = 'SELECT NAICS_code FROM master_industry_code';
+        $query = 'SELECT NAICS_code,NAICS_title FROM master_industry_code';
         $NAICSCode = $this->ds->select($query);
         return $NAICSCode;
-        //var_dump($NAICSCode);
+    }
+
+    public function fetchIduData($indusCode,$indusDesc)
+    {
+      $query = "SELECT NAICS_code,NAICS_title FROM master_industry_code WHERE NAICS_code = '$indusCode' OR NAICS_title = '$indusDesc' ";
+        $IduData = $this->ds->select($query);
+        return $IduData;
     }
 
 }

@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+ require_once './Model/Member.php';
+?>
+ <!DOCTYPE html>
 <html>
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
@@ -30,6 +33,24 @@
 <?php 
 include("header.php");
 include("left_panel.php");
+$user_type = $_SESSION["user_type"];
+$user_name = $_SESSION["user_name"];
+$user_id = $_SESSION["user_id"];
+
+$menu1 = $menu2 = $menu3 = $menu4 = 'none';
+
+if($user_type==0){
+  $menu1 = 'block';
+}
+if($user_type==1){
+  $menu2 =  'block';
+}
+if($user_type==2){
+   $menu3 = 'block';
+}
+if($user_type==3){
+  $menu4 = 'block';
+}
 ?>
  
  <!-- Content Wrapper. Contains page content -->
@@ -63,8 +84,7 @@ include("left_panel.php");
                   The body of the box
                 </div>
               </div>
-            </div> 
-        </div>  
+           
 
         <div class="box box-info collapsed-box">
             <div class="box-header with-border">
@@ -81,7 +101,138 @@ include("left_panel.php");
               The body of the box
             </div>
           </div>
-        </div> 
+        
+
+        <div class="box box-info collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title" data-widget="collapse">Cost Profile History</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              
+            
+            <!-- /.box-header -->
+            <div id="AnkAdmins" style="display:<?php echo $menu1;?>">
+              <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Sl No</th>
+                  <th>User Name</th>
+                  <th>Company Name</th>
+                  <th>User Type</th>
+                  <th>Country</th>
+                  <th>Industry Type</th>
+                  <th>Industry Code</th>
+                  <th>Date & Time</th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>21000002</td>
+                  <td>Cody Brown</td>
+                  <td>CA243454</td>
+                  <td>Brown Industries</td>
+                  <td>MD</td>
+                  <td>Brown Industries</td>
+                  <td>MD</td>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+          
+           <div id="EnterpriseAdmin" style="display:<?php echo $menu2;?>">
+              <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Sl No</th>
+                  <th>User Name</th>
+                  <th>Country</th>
+                  <th>Industry Type</th>
+                  <th>Industry Code</th>
+                  <th>Date & Time</th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>21000002</td>
+                  <td>Cody Brown</td>
+                  <td>CA243454</td>
+                  <td>Brown Industries</td>
+                  <td>MD</td>
+                 </tr>
+                </tfoot>
+              </table>
+            </div> 
+
+            <div id="EnterpriseUsers" style="display:<?php echo $menu3;?>">
+              <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Sl No</th>
+                  <th>Country</th>
+                  <th>Industry Type</th>
+                  <th>Industry Code</th>
+                  <th>Date & Time</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>21000002</td>
+                  <td>Cody Brown</td>
+                  <td>CA243454</td>
+                  <td>Brown Industries</td>
+                </tr>
+                </tfoot>
+              </table>
+            </div> 
+
+           
+            <div id="IndiviUsers" style="display:<?php echo $menu4;?>">
+              <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Sl No</th>
+                  <th>User Name</th>
+                  <th>Company Name</th>
+                  <th>User Type</th>
+                  <th>Country</th>
+                  <th>Industry Type</th>
+                  <th>Industry Code</th>
+                  <th>Date & Time</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>21000002</td>
+                  <td>Cody Brown</td>
+                  <td>CA243454</td>
+                  <td>Brown Industries</td>
+                  <td>MD</td>
+                  <td>Brown Industries</td>
+                  <td>MD</td>
+                </tr>
+                </tfoot>
+              </table>
+            </div> 
+
+        </div>
+
+
+            </div>
+          </div>
+      
       
 
       </div>
@@ -315,9 +466,13 @@ include("left_panel.php");
     CKEDITOR.replace('editor1.html')
     //bootstrap WYSIHTML5 - text editor
     $('.textarea').wysihtml5()
-  })
+]
+
+$( window ).on( "load", function() {
+        console.log( "window loaded" );
+    });
 </script>
+
 </body>
 
-<!-- Mirrored from adminlte.io/themes/AdminLTE/pages/forms/editors.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Dec 2020 05:54:25 GMT -->
 </html>

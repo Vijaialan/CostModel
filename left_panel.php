@@ -4,7 +4,7 @@ $user_type = $_SESSION["user_type"];
 $user_name = $_SESSION["user_name"];
 $user_id = $_SESSION["user_id"];
 
-$menu1 = $menu2 = $menu3 = $menu4 = $menu5 = 'none';
+$menu1 = $menu2 = $menu3 = $menu4 = $menu5 =  $menu6 = 'none';
 
 if($user_type==0){
   $menu1 =  $menu2 = $menu3 = $menu4 = $menu5 = 'block';
@@ -13,10 +13,10 @@ if($user_type==1){
   $menu1 =  $menu2 = $menu3 = $menu4 = $menu5 = 'block';
 }
 if($user_type==2){
-  $menu1 =  $menu2 = $menu5 =  'block';
+   $menu2 = $menu5 =  'block';
 }
 if($user_type==3){
-  $menu1 =  $menu2 = $menu5 =  'block';
+   $menu2 = $menu5 = $menu6 =  'block';
 }
 
  ?> <aside class="main-sidebar">
@@ -50,6 +50,11 @@ if($user_type==3){
         <li style=display:<?php echo $menu5;?>>
           <a href="account_setting.php">
             <span>Account Settings</span>
+          </a>
+        </li>
+        <li style=display:<?php echo $menu6;?>>
+          <a href="payment_details.php">
+            <span>Subscription History</span>
           </a>
         </li>
 

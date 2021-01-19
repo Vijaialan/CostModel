@@ -1,6 +1,6 @@
 <?php
  require_once './Model/Member.php';
- ?>
+?>
  <!DOCTYPE html>
 <html>
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -46,6 +46,21 @@ include("left_panel.php");
 $user_type = $_SESSION["user_type"];
 $user_name = $_SESSION["user_name"];
 $user_id = $_SESSION["user_id"];
+
+$box1 = $box2 = $box3 = $box4 = 'none';
+
+if($user_type==0){
+  $box1 =  $box2 = $box3 = $box4 = 'block';
+}
+if($user_type==1){
+    $box2 = $box4  = 'block';
+}
+if($user_type==2){
+   $box4 = 'block';
+}
+if($user_type==3){
+  $box4 = 'block';
+}
 ?>
   
 
@@ -65,9 +80,9 @@ $user_id = $_SESSION["user_id"];
     <section class="content">
       <!-- Small boxes (Stat box) -->
       <div class="row">
-        <div class="col-lg-3 col-xs-6" onclick="showEnterpriseAdmin()">
+        <div class="col-lg-3 col-xs-6" onclick="showEnterpriseAdmin()" style=display:<?php echo $box1;?>>
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-aqua" >
             <div class="inner">
               <h3>20</h3>
 
@@ -80,7 +95,7 @@ $user_id = $_SESSION["user_id"];
           </div>
         </div>
         <!-- ./col -->   
-        <div class="col-lg-3 col-xs-6" onclick="showEnterpriseUsers()">
+        <div class="col-lg-3 col-xs-6" onclick="showEnterpriseUsers()" style=display:<?php echo $box2;?>>
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
@@ -95,9 +110,9 @@ $user_id = $_SESSION["user_id"];
           </div>
         </div>
         <!-- ./col -->  
-        <div class="col-lg-3 col-xs-6" onclick="showIndiviUsers()">
+        <div class="col-lg-3 col-xs-6" onclick="showIndiviUsers()" style=display:<?php echo $box3;?>>
           <!-- small box -->
-          <div class="small-box bg-yellow">
+          <div class="small-box bg-yellow" >
             <div class="inner">
               <h3>44</h3>
 
@@ -110,7 +125,7 @@ $user_id = $_SESSION["user_id"];
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6" onclick="showPaymentDetails()">
+        <div class="col-lg-3 col-xs-6" onclick="showPaymentDetails()" style=display:<?php echo $box4;?>>
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
@@ -125,10 +140,13 @@ $user_id = $_SESSION["user_id"];
           </div>
         </div>
       </div>
+      
+      
+      
+      
+      
       <div class="row">
-       
-
-    <section class="content">
+       <section class="content">
       <div class="row">
           
         <div class="col-xs-12">
@@ -138,7 +156,7 @@ $user_id = $_SESSION["user_id"];
               <h3 class="box-title">Enterprise Admins</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body" style="overflow: auto;">
               <table id="enterprise_admin" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -148,7 +166,12 @@ $user_id = $_SESSION["user_id"];
                   <th>Company Code</th>
                   <th>Company Name</th>
                   <th>Designation</th>
-                  
+                  <th>Plan Type</th>
+                  <th>Status</th>
+                  <th>Active Users</th>
+                  <th>Subscription Start Date</th>
+                  <th>Subscription End Date</th>
+                  <th>Cost Profiles Built</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -159,6 +182,12 @@ $user_id = $_SESSION["user_id"];
                   <td>CA243454</td>
                   <td>Brown Industries</td>
                   <td>MD</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 </tfoot>
               </table>
@@ -171,7 +200,7 @@ $user_id = $_SESSION["user_id"];
               <h3 class="box-title">Enterprise Users</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body" style="overflow: auto;">
               <table id="enterprise_user" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -181,6 +210,9 @@ $user_id = $_SESSION["user_id"];
                   <th>Company Code</th>
                   <th>Company Name</th>
                   <th>Designation</th>
+                  <th>Cost Profiles Built</th>
+                  <th>Status</th>
+                  <th>Last Logged in</th>
                   
                 </tr>
                 </thead>
@@ -192,6 +224,9 @@ $user_id = $_SESSION["user_id"];
                   <td>CA243454</td>
                   <td>Brown Industries</td>
                   <td>MD</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 </tfoot>
               </table>
@@ -204,8 +239,8 @@ $user_id = $_SESSION["user_id"];
               <h3 class="box-title">Individual Users</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-              <table id="indivi_user" class="table table-bordered table-hover">
+            <div class="box-body" style="overflow: auto;">
+            <table id="indivi_user" class="table table-bordered table-hover">
                 <thead>
                 <tr>
                   <th>Sl No</th>
@@ -214,7 +249,12 @@ $user_id = $_SESSION["user_id"];
                   <th>Company Code</th>
                   <th>Company Name</th>
                   <th>Designation</th>
-                  
+                  <th>Plan Type</th>
+                  <th>Status</th>
+                  <th>Subscription Start Date</th>
+                  <th>Subscription End Date</th>
+                  <th>Cost Profiles Built</th>
+                  <th>Last Logged in</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -225,8 +265,43 @@ $user_id = $_SESSION["user_id"];
                   <td>CA243454</td>
                   <td>Brown Industries</td>
                   <td>MD</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
-                </tfoot>
+                <tr>
+                  <td>1</td>
+                  <td>21000002</td>
+                  <td>Cody Brown</td>
+                  <td>CA243454</td>
+                  <td>Brown Industries</td>
+                  <td>MD</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>21000002</td>
+                  <td>Cody Brown</td>
+                  <td>CA243454</td>
+                  <td>Brown Industries</td>
+                  <td>MD</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                
+               </tfoot>
               </table>
             </div>
         </div> 
@@ -234,12 +309,12 @@ $user_id = $_SESSION["user_id"];
 
             <!-- Payment Details starts  -->  
             <div id="PaymentDetails" style="display:none;">            
-        <div class="box-header">
+              <div class="box-header">
               <h3 class="box-title">Payment Details</h3>
-            </div>
+              </div>
             <!-- /.box-header -->
-            <div class="box-body">
-              <table id="payment_details" class="table table-bordered table-hover">
+            <div class="box-body" style="overflow: auto;">
+            <table id="payment_details" class="table table-bordered table-hover">
                 <thead>
                 <tr>
                   <th>Sl No</th>
@@ -251,6 +326,7 @@ $user_id = $_SESSION["user_id"];
                   <th>Start Date</th>
                   <th>End Date</th>
                   <th>Paid Date</th>
+                  <th>Invoice</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -264,6 +340,7 @@ $user_id = $_SESSION["user_id"];
                   <td>2020-01-01</td>
                   <td>2020-03-01</td>
                   <td>2020-01-01</td>
+                  <td><a href="invoice.php">View</a></td>
                 </tr>
                 </tfoot>
               </table>
@@ -344,7 +421,7 @@ $user_id = $_SESSION["user_id"];
 
 <script>
   $(function () {
-    $('#example1').DataTable()
+   // $('#example1').DataTable()
     $('#enterprise_admin').DataTable({
       'paging'      : true,
       'lengthChange': false,

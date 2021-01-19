@@ -1,10 +1,18 @@
 <?php
  require_once './Model/Member.php';
  session_start();
- $user_type = $_SESSION["user_type"];
+$user_type = $_SESSION["user_type"];
 $user_name = $_SESSION["user_name"];
-$user_id = $_SESSION["user_id"];
- 
+$user_id = $_SESSION["user_id"]; 
+$job_title = $_SESSION["job_title"]; 
+$first_name = $_SESSION["first_name"]; 
+$f=substr($first_name,0,1);
+$last_name = $_SESSION["last_name"]; 
+$l=substr($last_name,0,1);
+$created_date = strtotime($_SESSION["created_date"]);
+$c_mon = date("F",$created_date);
+$y_mon = date("Y",$created_date); 
+
  ?><header class="main-header">
     <!-- Logo -->
     <a href="index2.html" class="logo">
@@ -58,47 +66,20 @@ $user_id = $_SESSION["user_id"];
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="user-image" style="background: #f6f6f6;
+    color: #3c8dbc;
+    text-align: center;
+    padding: 2px;font-size: 12px;font-weight: 700;"><?php echo $f;?> <?php echo $l;?></span>
+              <span class="hidden-xs"><?php echo $first_name;?> <?php echo $last_name;?></span>
             </a>
             <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
-              <!-- Menu Body -->
-              <!-- <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                
-              </li> -->
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <!-- <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div> -->
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
+            
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-          
+          <li>
+            <a href="logout.php"><i class="fa fa-sign-out"></i></a>
+          </li>
         </ul>
       </div>
     </nav>
