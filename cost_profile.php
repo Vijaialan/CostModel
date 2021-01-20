@@ -169,7 +169,7 @@ echo'
                   <th style="width: 40px">Source</th>
                 </tr>
                 <tr>
-                  <td>Direct Material</td>
+                  <td><i>&nbsp  Direct Material</i></td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -178,7 +178,7 @@ echo'
                   <td></td>
                 </tr>
                 <tr>
-                  <td>Direct Labor</td>
+                  <td><i>&nbsp Direct Labor</i></td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -187,7 +187,7 @@ echo'
                   <td></td>
                 </tr>
                 <tr>
-                  <td>Overheads</td>
+                  <td><i>&nbsp Overheads</i></td>
                   <td></td>
                   <td></td>
                   <td></td>
