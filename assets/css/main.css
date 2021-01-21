@@ -81,3 +81,20 @@ margin-top:  12%;
         background-size: 240px 24px;
     }
 }
+
+@media only screen and (max-width:620px) {
+    .left-side{
+      width:100%; 
+    }
+    .comp_tag{
+        margin-top: 22%;
+    }
+    .login_area,.login-box,.register-area{
+        width:100%; 
+    }
+    .reg-button{
+        margin-left: 30%;
+        padding: 5px;
+        
+    }
+  }

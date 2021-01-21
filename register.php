@@ -32,7 +32,7 @@ if (! empty($_POST["signup-btn"])) {
 </head>
 <body class="hold-transition register-page">
 <div class="col-xs-12">
-   <div class="col-xs-6">
+   <div class="col-xs-6 left-side">
       <img src="assets/images/login_bg.png" style="height: 100%;width: 100%;">
     
     <section class="comp_name">
@@ -47,7 +47,7 @@ if (! empty($_POST["signup-btn"])) {
                         <img src="assets/images/company_logo.png" alt="logo">
                      </section>
        </div>
-<div class="col-xs-6" >
+<div class="col-xs-6 register-area" >
 <div class="register-box" style="width: 80%;">
 
   <div class="register-box-body">
@@ -142,7 +142,7 @@ if (! empty($_POST["signup-btn"])) {
           
         </div>
         <!-- /.col -->
-        <div class="col-xs-4">
+        <div class="col-xs-4 reg-button">
           <button type="submit" value="Register" id="signup-btn" name="signup-btn" class="btn btn-primary btn-block btn-flat">Register</button>
         </div>
         <!-- /.col -->

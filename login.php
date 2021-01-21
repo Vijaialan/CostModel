@@ -32,24 +32,22 @@ if (!empty($_POST["login-password"])) {
 </head>
 <body class="hold-transition login-page">
   <div class="col-xs-12">
-    <div class="col-xs-6">
-      <img src="assets/images/login_bg.png" style="height: 100%;width: 100%;">
-    
-    <section class="comp_name">
-          <span class="title">Industry Cost Profile</span><br>
-          
-    </section>
-    <section class="comp_tag">
-    <span class="title">Value is more expensive than price.</span>
-  </section>
-                    <section class="powerdby">
-                        <span class="title">Powered by the</span><br>
-                        <img src="assets/images/company_logo.png" alt="logo">
-                     </section>
+       <div class="col-xs-6 left-side" >
+          <img src="assets/images/login_bg.png" style="height: 100%;width: 100%;">
+              <section class="comp_name">
+                    <span class="title">Industry Cost Profile</span><br>
+              </section>
+              <section class="comp_tag">
+              <span class="title">Value is more expensive than price.</span>
+              </section>
+              <section class="powerdby">
+                  <span class="title">Powered by the</span><br>
+                  <img src="assets/images/company_logo.png" alt="logo">
+              </section>
        </div>              
     <div class="col-xs-6 login_area">
          
-<div class="login-box" style="width: 70%;">
+      <div class="login-box" style="width: 70%;">
 
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
