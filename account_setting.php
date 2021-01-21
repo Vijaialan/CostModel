@@ -38,18 +38,23 @@ $user_name = $_SESSION["user_name"];
 $user_id = $_SESSION["user_id"];
 
 $menu1 = $menu2 = $menu3 = $menu4 = 'none';
+$box1 = $box2 = $box3  = 'none';
 
 if($user_type==0){
   $menu1 = 'block';
+  $box1 = $box3  = 'block';
 }
 if($user_type==1){
   $menu2 =  'block';
+  $box1 = $box3  = 'block';
 }
 if($user_type==2){
    $menu3 = 'block';
+   $box1 = $box2 = $box3  = 'block';
 }
 if($user_type==3){
   $menu4 = 'block';
+  $box1 = $box2 = $box3  = 'block';
 }
 ?>
  
@@ -69,7 +74,7 @@ if($user_type==3){
       <div class="row">
         <div class="col-md-12">
 
-            <div class="box box-info collapsed-box">
+            <div class="box box-info collapsed-box" style="display:<?php echo $box1;?>">
                 <div class="box-header with-border">
                   <h3 class="box-title" data-widget="collapse">Change Password</h3>
 
@@ -81,12 +86,51 @@ if($user_type==3){
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                  The body of the box
+                
+        <section class="col-lg-6 connectedSortable">
+        
+        <div class="box-body">
+           <form class="form-horizontal">        
+             <div class="form-group">
+              <label class="col-sm-4 control-label" style="text-align:left;">Current Password</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="Please enter current password">
+                 </div> 
+              </div>
+             
+
+             <div class="form-group">
+                 <label class="col-sm-4 control-label" style="text-align:left;">New Password</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="Please enter new password">
+                 </div> 
+              </div>
+
+              <div class="form-group">
+                 <label class="col-sm-4 control-label" style="text-align:left;">Confirm Password</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="Please confirm password">
+                 </div> 
+              </div>  
+
+              <div class="form-group">
+               <button type="button" class="btn btn-primary pull-right" style="margin-right: 15px;">
+             Submit
+            </button>
+              </div>
+              <!-- /.form group -->
+              </form>
+            </div>
+            
+          
+          
+          
+        </section>
                 </div>
               </div>
            
 
-        <div class="box box-info collapsed-box">
+        <div class="box box-info collapsed-box" style="display:<?php echo $box2;?>">
             <div class="box-header with-border">
               <h3 class="box-title" data-widget="collapse">Subscription Details</h3>
 
@@ -98,12 +142,43 @@ if($user_type==3){
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              The body of the box
+            <div class="box-body">
+            <table id="payment_details" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Sl No</th>
+                  <th>User Id</th>
+                  <th>User Name</th>
+                  <th>Company Code</th>
+                  <th>Company Name</th>
+                  <th>Plan Type</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Paid Date</th>
+                  <th>Invoice</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>21000002</td>
+                  <td>Cody Brown</td>
+                  <td>CA243454</td>
+                  <td>Brown Industries</td>
+                  <td>Gold</td>
+                  <td>2020-01-01</td>
+                  <td>2020-03-01</td>
+                  <td>2020-01-01</td>
+                  <td><a href="invoice.php">View</a></td>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
             </div>
           </div>
         
 
-        <div class="box box-info collapsed-box">
+        <div class="box box-info collapsed-box" style="display:<?php echo $box3;?>">
             <div class="box-header with-border">
               <h3 class="box-title" data-widget="collapse">Cost Profile History</h3>
 
@@ -127,22 +202,19 @@ if($user_type==3){
                   <th>Company Name</th>
                   <th>User Type</th>
                   <th>Country</th>
-                  <th>Industry Type</th>
                   <th>Industry Code</th>
                   <th>Date & Time</th>
-                  
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                   <td>1</td>
-                  <td>21000002</td>
                   <td>Cody Brown</td>
-                  <td>CA243454</td>
                   <td>Brown Industries</td>
-                  <td>MD</td>
-                  <td>Brown Industries</td>
-                  <td>MD</td>
+                  <td></td>
+                  <td>USA</td>
+                  <td>111001</td>
+                  <td>2021-01-21 10:00:00</td>
                 </tr>
                 </tfoot>
               </table>
@@ -155,7 +227,6 @@ if($user_type==3){
                   <th>Sl No</th>
                   <th>User Name</th>
                   <th>Country</th>
-                  <th>Industry Type</th>
                   <th>Industry Code</th>
                   <th>Date & Time</th>
                   
@@ -164,11 +235,10 @@ if($user_type==3){
                 <tbody>
                 <tr>
                   <td>1</td>
-                  <td>21000002</td>
                   <td>Cody Brown</td>
-                  <td>CA243454</td>
-                  <td>Brown Industries</td>
-                  <td>MD</td>
+                  <td></td>
+                  <td>111001</td>
+                  <td>2021-01-21 10:00:00</td>
                  </tr>
                 </tfoot>
               </table>
@@ -180,7 +250,6 @@ if($user_type==3){
                 <tr>
                   <th>Sl No</th>
                   <th>Country</th>
-                  <th>Industry Type</th>
                   <th>Industry Code</th>
                   <th>Date & Time</th>
                 </tr>
@@ -189,9 +258,8 @@ if($user_type==3){
                 <tr>
                   <td>1</td>
                   <td>21000002</td>
-                  <td>Cody Brown</td>
-                  <td>CA243454</td>
-                  <td>Brown Industries</td>
+                  <td>111001</td>
+                  <td>2021-01-21 10:00:00</td>
                 </tr>
                 </tfoot>
               </table>
@@ -203,11 +271,7 @@ if($user_type==3){
                 <thead>
                 <tr>
                   <th>Sl No</th>
-                  <th>User Name</th>
-                  <th>Company Name</th>
-                  <th>User Type</th>
                   <th>Country</th>
-                  <th>Industry Type</th>
                   <th>Industry Code</th>
                   <th>Date & Time</th>
                 </tr>
@@ -215,13 +279,9 @@ if($user_type==3){
                 <tbody>
                 <tr>
                   <td>1</td>
-                  <td>21000002</td>
-                  <td>Cody Brown</td>
-                  <td>CA243454</td>
-                  <td>Brown Industries</td>
-                  <td>MD</td>
-                  <td>Brown Industries</td>
-                  <td>MD</td>
+                  <td>USA</td>
+                  <td>111001</td>
+                  <td>2021-01-21 10:00:00</td>
                 </tr>
                 </tfoot>
               </table>

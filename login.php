@@ -47,7 +47,7 @@ if (!empty($_POST["login-password"])) {
        </div>              
     <div class="col-xs-6 login_area">
          
-      <div class="login-box" style="width: 70%;">
+      <div class="login-box" style="width: 80%;">
 
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>

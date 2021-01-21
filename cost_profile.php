@@ -160,25 +160,16 @@ echo'
             <div class="box-body">
               <table class="table table-bordered">
                 <tr>
-                  <th>Cost Element</th>
-                  <th style="width: 10%">2021</th>
-                  <th style="width: 10%">2020</th>
-                  <th style="width: 10%">2019</th>
-                  <th style="width: 10%">2018</th>
-                  <th style="width: 10%">2017</th>
-                  <th style="width: 40px">Source</th>
+                  <th  style="width: 1%;">Cost Element</th>
+                  <th>2021</th>
+                  <th>2020</th>
+                  <th>2019</th>
+                  <th>2018</th>
+                  <th>2017</th>
+                  <th>Source</th>
                 </tr>
                 <tr>
-                  <td><i>&nbsp  Direct Material</i></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td><i>&nbsp Direct Labor</i></td>
+                  <td><i>&nbsp&nbsp&nbsp Direct Material</i></td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -187,7 +178,16 @@ echo'
                   <td></td>
                 </tr>
                 <tr>
-                  <td><i>&nbsp Overheads</i></td>
+                  <td><i>&nbsp&nbsp&nbsp Direct Labor</i></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><i>&nbsp&nbsp&nbsp Overheads</i></td>
                   <td></td>
                   <td></td>
                   <td></td>

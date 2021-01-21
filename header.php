@@ -17,7 +17,7 @@ $y_mon = date("Y",$created_date);
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>CP</b></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Cost Profile</b></span>
     </a>
@@ -65,16 +65,12 @@ $y_mon = date("Y",$created_date);
       
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="user-image" style="background: #f6f6f6;
-    color: #3c8dbc;
-    text-align: center;
-    padding: 2px;font-size: 12px;font-weight: 700;"><?php echo $f;?> <?php echo $l;?></span>
-              <span class="hidden-xs"><?php echo $first_name;?> <?php echo $last_name;?></span>
-            </a>
-            <ul class="dropdown-menu">
             
-            </ul>
+             
+            <a href="" style="cursor: default;">
+              <span ><?php echo $first_name;?> <?php echo $last_name;?></span>
+              <span style="border-radius: 50%;background: #f6f6f6;color: #3c8dbc;text-align: center;padding: 5px;font-size: 12px;font-weight: 700;"><?php echo $f;?> <?php echo $l;?></span>
+            </a>
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>

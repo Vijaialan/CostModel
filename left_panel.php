@@ -53,7 +53,7 @@ if($user_type==3){
           </a>
         </li>
         <li style=display:<?php echo $menu6;?>>
-          <a href="payment_details.php">
+          <a href="subscription_history.php">
             <span>Subscription History</span>
           </a>
         </li>
