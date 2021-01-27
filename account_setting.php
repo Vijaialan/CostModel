@@ -94,7 +94,7 @@ if($user_type==3){
              <div class="form-group">
               <label class="col-sm-4 control-label" style="text-align:left;">Current Password</label>
                 <div class="col-sm-8">
-                <input type="text" class="form-control" placeholder="Please enter current password">
+                <input type="text" class="form-control" placeholder="Enter Current Password">
                  </div> 
               </div>
              
@@ -102,14 +102,14 @@ if($user_type==3){
              <div class="form-group">
                  <label class="col-sm-4 control-label" style="text-align:left;">New Password</label>
                 <div class="col-sm-8">
-                <input type="text" class="form-control" placeholder="Please enter new password">
+                <input type="text" class="form-control" placeholder="Enter New Password">
                  </div> 
               </div>
 
               <div class="form-group">
                  <label class="col-sm-4 control-label" style="text-align:left;">Confirm Password</label>
                 <div class="col-sm-8">
-                <input type="text" class="form-control" placeholder="Please confirm password">
+                <input type="text" class="form-control" placeholder="Confirm New Password">
                  </div> 
               </div>  
 

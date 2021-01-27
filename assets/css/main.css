@@ -69,6 +69,29 @@ margin-top:  12%;
 .content-wrapper {
     background-color: #fff;
 }
+ #left-side{
+    position: relative;
+    width: 50%;
+  } 
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /*height: 100%;
+    width: 98%;*/
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #5495f7;
+    /*light blue background-color: #5858D9;*/
+  }
+  
+  /*#container:hover .overlay {
+    opacity: .2;
+  }*/
+
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
        only screen and (-moz-min-device-pixel-ratio: 1.5),
@@ -83,7 +106,7 @@ margin-top:  12%;
 }
 
 @media only screen and (max-width:620px) {
-    .left-side{
+    .left-side,{
       width:100%; 
     }
     .comp_tag{
@@ -96,5 +119,8 @@ margin-top:  12%;
         margin-left: 30%;
         padding: 5px;
         
+    }
+    .overlay {
+        width:100%; 
     }
   }

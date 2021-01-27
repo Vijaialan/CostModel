@@ -32,7 +32,7 @@ use Phppot\Member;
   <link rel="stylesheet" href="assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
+  <link rel="stylesheet" href="assets/bower_components/select2/dist/css/select2.min.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -82,9 +82,9 @@ $user_id = $_SESSION["user_id"];
            </div>
 
            <div class="form-group"> 
-             <label for="inputEmail3" class="col-sm-4 control-label" style="text-align:left;">Search Industry Code</label>
+             <label for="inputEmail3" class="col-sm-4 control-label" style="text-align:left;margin-top:-5px;">Search Industry Code</label>
               <div class="col-sm-8">
-              <select class="form-control select2" id="indusCode" name="indusCode" style="width: 100%;" onchange="indcode()">
+              <select class="form-control select2" id="indusCode" name="indusCode"  onchange="indcode()">
                <option value="">Select Industry Code</option>
                <?php
                   // Iterating through the product array
@@ -103,9 +103,9 @@ $user_id = $_SESSION["user_id"];
            </div>
            
            <div class="form-group">
-              <label for="inputEmail3" class="col-sm-4 control-label" style="text-align:left;">Search Industry description</label>
+              <label for="inputEmail3" class="col-sm-4 control-label" style="text-align:left;margin-top:-10px;">Search Industry description</label>
              <div class="col-sm-8">
-             <select  class="form-control select2" id="indusDesc" name="indusDesc" style="width: 100%;" onchange="inddesc()">
+             <select  class="form-control select2" id="indusDesc" name="indusDesc"  onchange="inddesc()">
                <option value="">Select Industry description</option>
                <?php
                   // Iterating through the product array
@@ -147,20 +147,14 @@ echo'
             <h4>
             Industry Cost Profile for NAICS code '.$IndustrialData[0]['NAICS_code'].' : '.$IndustrialData[0]['NAICS_title'].'
             </h4>
-            <div class="col-md-4">
-               
-                <div class="box-body">
-                  <canvas id="pieChart" style="height:250px"></canvas>
-                  <h4 style="text-align:center;">2021</h4>
-                </div>
-             </div>
-             
-             <div class="col-md-8" id="ManufacturingType">
+         
+            
            
             <div class="box-body">
               <table class="table table-bordered">
                 <tr>
-                  <th  style="width: 1%;">Cost Element</th>
+                  <th  style="width: 15%;text-align:center;">Cost Element</th>
+                  <th style="width: 20%;text-align:center;"><span style="text-align:center;margin-left:6px;width:30%;">%</span><br>2021</th>
                   <th>2021</th>
                   <th>2020</th>
                   <th>2019</th>
@@ -169,59 +163,78 @@ echo'
                   <th>Source</th>
                 </tr>
                 <tr>
-                  <td><i>&nbsp&nbsp&nbsp Direct Material</i></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><i>&nbsp&nbsp&nbsp -Direct Material</i></td>
+                  <td>
+                  <div class="progress progress-xs progress-striped active">
+                  <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                  </div>
+                </td>
+                  <td><span class="badge bg-light-blue">30%</span></td>
+                  <td><span class="badge bg-light-blue">30%</span></td>
+                  <td><span class="badge bg-light-blue">30%</span></td>
+                  <td><span class="badge bg-light-blue">30%</span></td>
+                  <td><span class="badge bg-light-blue">30%</span></td>
+                  <td>The North American Industry Classification System</td>
                 </tr>
                 <tr>
-                  <td><i>&nbsp&nbsp&nbsp Direct Labor</i></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><i>&nbsp&nbsp&nbsp -Direct Labor</i></td>
+                  <td>  <div class="progress progress-xs progress-striped active">
+                  <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                </div></td>
+                  <td><span class="badge bg-green">90%</span></td>
+                  <td><span class="badge bg-green">90%</span></td>
+                  <td><span class="badge bg-green">90%</span></td>
+                  <td><span class="badge bg-green">90%</span></td>
+                  <td><span class="badge bg-green">90%</span></td>
+                  <td>The North American Industry Classification System</td>
                 </tr>
                 <tr>
-                  <td><i>&nbsp&nbsp&nbsp Overheads</i></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><i>&nbsp&nbsp&nbsp -Overheads</i></td>
+                  <td> <div class="progress progress-xs progress-striped active">
+                  <div class="progress-bar progress-bar-danger" style="width: 30%"></div>
+                  </div></td>
+                  <td><span class="badge bg-red">60%</span></td>
+                  <td><span class="badge bg-red">60%</span></td>
+                  <td><span class="badge bg-red">60%</span></td>
+                  <td><span class="badge bg-red">60%</span></td>
+                  <td><span class="badge bg-red">60%</span></td>
+                   <td>The North American Industry Classification System</td>
                 </tr>
                 <tr>
                 <td>Cost of Sales</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td> <div class="progress progress-xs progress-striped active">
+                <div class="progress-bar progress-bar-warning" style="width: 30%"></div>
+                </div></td>
+                  <td><span class="badge bg-yellow">50%</span></td>
+                  <td><span class="badge bg-yellow">50%</span></td>
+                  <td><span class="badge bg-yellow">50%</span></td>
+                  <td><span class="badge bg-yellow">50%</span></td>
+                  <td><span class="badge bg-yellow">50%</span></td>
+                <td>The North American Industry Classification System</td>
               </tr>
                 <tr>
-                <td style="width: 40%" data-toggle="tooltip" data-placement="top" title="Selling, General, and Admin
-                Expenses">SGA</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                <td>SGA</td>
+                  <td> <div class="progress progress-xs progress-striped active">
+                  <div class="progress-bar progress-bar-info" style="width: 30%"></div>
+                  </div></td>
+                  <td><span class="badge bg-blue">40%</span></td>
+                  <td><span class="badge bg-blue">40%</span></td>
+                  <td><span class="badge bg-blue">40%</span></td>
+                  <td><span class="badge bg-blue">40%</span></td>
+                  <td><span class="badge bg-blue">40%</span></td>
+                  <td>The North American Industry Classification System</td>
                 </tr>
                 <tr>
-                  <td style="width: 40%" data-toggle="tooltip" data-placement="top" title="Profit Before Tax">PBT</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td >PBT</td>
+                  <td> <div class="progress progress-xs progress-striped active">
+                  <div class="progress-bar progress-bar-gray" style="width: 30%;background-color: darkgray;"></div>
+                  </div></td>
+                  <td><span class="badge bg-darkgray">30%</span></td>
+                  <td><span class="badge bg-darkgray">30%</span></td>
+                  <td><span class="badge bg-darkgray">30%</span></td>
+                  <td><span class="badge bg-darkgray">30%</span></td>
+                  <td><span class="badge bg-darkgray">30%</span></td>
+                  <td>The North American Industry Classification System</td>
                 </tr>
               </table>
             </div>
@@ -230,7 +243,7 @@ echo'
                 <li><button type="button" class="btn btn-warning">Download in Excel</button></li>
               </ul>
           </div> 
-        </div>  
+        
        ';
    }?>
         
@@ -482,7 +495,7 @@ echo'
 <!-- AdminLTE for demo purposes -->
 <script src="assets/dist/js/demo.js"></script>
 <script src="assets/js/ad.js"></script>
-
+<script src="assets/bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- ChartJS -->
 <script src="assets/bower_components/chart.js/Chart.js"></script>
 
@@ -561,5 +574,13 @@ $('#indusform').on('submit', function() {
 
 </script>
 
+<script>
+$(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+  
+  })
+</script>
 </body>
 </html>
