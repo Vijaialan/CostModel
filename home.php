@@ -62,14 +62,21 @@ if($user_type==3){
   $box4 = 'block';
 }
 ?>
-  
+  <style>
+ a.home {
+    background-color:#3c8dbc;
+}
+a.home:hover {
+    background-color:#3c8dbc!important;
+}
+</style>
 
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
   
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <section class="content-header" style="text-align:center;">
       <h1>
         Dashboard
       </h1>
@@ -480,6 +487,7 @@ if($user_type==3){
       document.getElementById("EnterpriseUsers").style.display="none";
       document.getElementById("IndiviUsers").style.display="none";
   }
+
 </script>
 </body>
 </html>

@@ -34,7 +34,7 @@ if (! empty($_POST["signup-btn"])) {
 <div class="col-xs-12">
    <div class="col-xs-6" id="left-side">
       <img src="assets/images/login_back.png" style="height: 100%;width: 100%;">
-         <div class="overlay" style="opacity: .5;height: 100%;width: 95%;margin-left:2.6%; "></div>
+         <div class="overlay" style="opacity: .6;height: 100%;width: 95%;margin-left:2.6%; "></div>
     
     <section class="comp_name">
           <span class="title">Industry Cost Profile</span><br>

@@ -36,6 +36,16 @@ use Phppot\Member;
   <link rel="stylesheet" href="assets/css/main.css">
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <style>
+ a.cost {
+    background-color:#3c8dbc;
+}
+a.cost:hover {
+    background-color:#3c8dbc!important;
+}
+</style>
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -54,14 +64,11 @@ $user_id = $_SESSION["user_id"];
   <div class="content-wrapper">
   
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <section class="content-header" style="text-align:center;">
       <h4>
         Industry Details
       </h4>
-      <ol class="breadcrumb">
-        <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Cost Profile</li>
-      </ol>
+      
     </section>
 
     <!-- Main content -->

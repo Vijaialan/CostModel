@@ -84,7 +84,7 @@ margin-top:  12%;
     width: 98%;*/
     opacity: 0;
     transition: .5s ease;
-    background-color: #5495f7;
+    background-color: #0f78c2;
     /*light blue background-color: #5858D9;*/
   }
   
@@ -92,6 +92,10 @@ margin-top:  12%;
     opacity: .2;
   }*/
 
+
+  li.selected{
+    color:red;
+  }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
        only screen and (-moz-min-device-pixel-ratio: 1.5),

@@ -34,7 +34,7 @@ if (!empty($_POST["login-password"])) {
   <div class="col-xs-12">
        <div class="col-xs-6" id="left-side" >
           <img class="left-img" src="assets/images/login_bg.png" style="height: 100%;width: 100%;">
-          <div class="overlay" style="opacity: .5;height: 100%;width: 95.5%;margin-left:18px; "></div>
+          <div class="overlay" style="opacity: .6;height: 100%;width: 95.5%;margin-left:18px; "></div>
               <section class="comp_name">
                     <span class="title">Industry Cost Profile</span><br>
               </section>

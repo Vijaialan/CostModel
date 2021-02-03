@@ -31,6 +31,14 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <style>
+ a.plan {
+    background-color:#3c8dbc;
+}
+a.plan:hover {
+    background-color:#3c8dbc!important;
+}
+</style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -46,15 +54,12 @@ include("left_panel.php");
   <div class="content-wrapper">
   
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <section class="content-header" style="text-align:center;">
       <h1>
         Membership Details Form
         
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Membership Details Form</li>
-      </ol>
+     
     </section>
 
     <!-- Main content -->
@@ -63,43 +68,38 @@ include("left_panel.php");
       <!-- Main row -->
       <div class="row">
         <!-- Left col -->
-        <section class="col-lg-6 connectedSortable">
+        <section class="col-lg-12 connectedSortable">
         
         <div class="box-body">
            <form class="form-horizontal">        
              <div class="form-group">
-              <label class="col-sm-4 control-label" style="text-align:left;">Plan Name</label>
-                <div class="col-sm-8">
+              <label class="col-sm-2 control-label" style="text-align:left;">Plan Name</label>
+                <div class="col-sm-4">
                 <input type="text" class="form-control">
                  </div> 
-              </div>
              
-
-             <div class="form-group">
-                 <label class="col-sm-4 control-label" style="text-align:left;">Amount (USD)</label>
-                <div class="col-sm-8">
+                 <label class="col-sm-2 control-label" style="text-align:left;">Amount (USD)</label>
+                <div class="col-sm-4">
                 <input type="text" class="form-control" placeholder="Per Month">
                  </div> 
               </div>
 
               <div class="form-group">
-                 <label class="col-sm-4 control-label" style="text-align:left;">Discount (USD) %</label>
-                <div class="col-sm-8">
+                 <label class="col-sm-2 control-label" style="text-align:left;">Discount (USD) %</label>
+                <div class="col-sm-4">
                 <input type="text" class="form-control" placeholder="Eg : 20">
                  </div> 
-              </div>  
-
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-4 control-label" style="text-align:left;">No of Participants</label>
-                 <div class="col-sm-8">
+             
+                <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">No of Participants</label>
+                 <div class="col-sm-4">
                 <input type="text" class="form-control">
               </div>
               </div>
               
               <div class="form-group">
-                 <label for="inputEmail3" class="col-sm-4 control-label" style="text-align:left;">Features</label>
+                 <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">Features</label>
                 
-                <div class="col-sm-8">
+                <div class="col-sm-4">
                   <textarea rows=5 cols=48 class="form-control"></textarea>
 
                 </div>
@@ -107,10 +107,8 @@ include("left_panel.php");
               <!-- /.form group -->
 
               <!-- IP mask -->
-              <div class="form-group">
-               <button type="button" class="btn btn-primary pull-right" style="margin-right: 15px;">
-             Submit
-            </button>
+              <div class="col-sm-12" style="text-align:center;" >
+               <button type="button" class="btn btn-primary" >Submit</button>
               </div>
               <!-- /.form group -->
               </form>

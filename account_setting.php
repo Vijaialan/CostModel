@@ -26,6 +26,16 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+        <style>
+ a.account {
+    background-color:#3c8dbc;
+}
+a.account:hover {
+    background-color:#3c8dbc!important;
+}
+
+</style>      
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -61,12 +71,9 @@ if($user_type==3){
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <section class="content-header" style="text-align:center;">
       <h4>Account Settings</h4>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Account Settings</li>
-      </ol>
+      
     </section>
 
     <!-- Main content -->
@@ -531,6 +538,8 @@ if($user_type==3){
 $( window ).on( "load", function() {
         console.log( "window loaded" );
     });
+
+
 </script>
 
 </body>
